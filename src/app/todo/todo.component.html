@@ -1,14 +1,20 @@
+<div class="p-3">
 
-<div class="container">
-  <div class="">
-    <div class="p-3">
-      <div class="input-group">
-        <input type="text" class="form-control" #titleInput/>
-        <button class="btn" (click)="onClick(titleInput)">
-          <i class="fa-solid fa-circle-plus fa-xl"></i>
-        </button>
+    <div class="input-group w-50 mx-auto mb-3"><!-- /.input-group -->
+      <input type="text" class="form-control" #titleInput/>
+      <div class="btn btn-outline-secondary" type="button" (click)="onClick(titleInput)">
+        Add
+      </div>
+    </div><!-- /.input-group -->
+
+    <div class="mb-3 bg-light" *ngFor="let item of todos">
+      <div class="input-group mb-0">
+        <div class="input-group-text">
+          <input class="form-check-input mt-0" type="checkbox" [checked]='item.isDone' (change)="onChange(item.id, !item.isDone)">
+        </div>
+        <label class="form-control">{{item.title}}</label>
+        <button class="btn btn-outline-secondary" (click)="onDelete(item.id)"><i class="fa-solid fa-trash-can"></i></button>
       </div>
     </div>
-  </div>
 </div>
 
